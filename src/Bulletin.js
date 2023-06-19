@@ -15,7 +15,8 @@ function NewlineText(props) {
     return newText;
 }
 
-function Bulletin() {
+function List() {
+
     const [announcement, setAnnouncement] = useState([]);
     const fetchPost = async () => {
         //db.collection('cities').order('population', 'desc')
@@ -23,8 +24,8 @@ function Bulletin() {
             .then((querySnapshot) => {
                 const newData = querySnapshot.docs
                     .map((doc) => ({ ...doc.data(), id: doc.id }));
+
                 setAnnouncement(newData);
-                //console.log(announcement, newData);
             })
 
     }
@@ -40,16 +41,18 @@ function Bulletin() {
                 <Col md={7}>
                     <Accordion defaultActiveKey="0">
                         <div className="announcement-content" >
+
                             {
                                 announcement?.map((item, i) => (
-                                    
+
                                     <Accordion.Item eventKey={i}>
                                         <Accordion.Header>【{item.category}】{item.title}</Accordion.Header>
                                         <Accordion.Body>
+                                            {item.id}
                                             {/* <p>{item.content}</p> */}
                                             <NewlineText text={item.content} />
-                                            {item.pic ? <p><img src={item.pic} alt="pic" width="300"/><br/></p>:<p></p>}
-                                            
+                                            {item.pic ? <p><img src={item.pic} alt="pic" width="300" /><br /></p> : <p></p>}
+
                                             ---<br />
                                             發布日期：{item.ptime}
                                         </Accordion.Body>
@@ -65,4 +68,4 @@ function Bulletin() {
     );
 }
 
-export default Bulletin;
+export default List;

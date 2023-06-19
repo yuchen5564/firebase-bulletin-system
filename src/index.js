@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Login from './Login';
 import Post from './Post';
+import List from './List';
 import Bulletin from './Bulletin';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,6 +20,7 @@ root.render(
           <Route exact path="/" element={<App />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/post" element={<Post />} />
+          <Route exact path="/list" element={<List />} />
           
         </Routes>
       </AuthProvider>
